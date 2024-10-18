@@ -1,0 +1,31 @@
+    {{!-- {{#each product}}
+    <div class="shop-section"></div>
+                            <div class="box1 box">
+                                <!-- Dynamically set the background image from the product's Image field -->
+                                <div class="box-img" style="background-image: url('{{this.Image}}');"></div>
+                                <div class="box-content">
+                                    <h2 style="font-size: 20px;">{{this.Name}}</h2>
+                                    <h3 style="font-size: 20px;">{{this.Price}}</h3>
+
+                                    <h5 style="font-size: 10px;">{{this.About}}</h5>
+
+                                    <p>{{this.Brand}}</p>
+
+
+
+    {{/each}} --}}
+{{#each searchProduct}}
+<div class="shop-section">
+    <div class="box1 box">
+        <div class="box-img" style="background-image: url('{{this.Image}}');"></div>
+        <div class="box-content">
+            <h2>{{this.Name}}</h2>
+            <h3>{{this.Price}}</h3>
+            <h5>{{this.About}}</h5>
+            <p>{{this.Brand}}</p>
+        </div>
+    </div>
+</div>
+{{else}}
+<p>No products found.</p>
+{{/each}}

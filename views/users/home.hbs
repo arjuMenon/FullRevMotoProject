@@ -1,0 +1,325 @@
+{{!-- <section>
+    {{#each products}}
+    <div class="container mt-5">
+        <div class="card-group">
+            <div class="card text-white bg-dark mb-3">
+                <img class="card-img-top" src="{{this.Image}}" alt="Card image cap" style="width: 100%; height: 500px;">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{this.Name}}</h5>
+                    <p class="card-text">{{this.Price}}</p>
+                    <p class="card-text">{{this.About}}</p>
+
+                    <p class="card-text"><small class="text-muted">{{this.Brand}}</small></p>
+                </div>
+            </div>
+            {{/each}}
+            <section> --}}
+
+                <!DOCTYPE html>
+                <html lang="en">
+
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Amazon</title>
+                    <!-- Font Awesome -->
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+                        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+                        crossorigin="anonymous" referrerpolicy="no-referrer" />
+                    <!-- CSS -->
+                    <link rel="stylesheet" href="/stylesheets/style.css">
+
+                </head>
+
+                <body>
+                    <header>
+                        <div class="navbar">
+                            <div class="nav-logo">
+                                <div class="logo"></div>
+                            </div>
+
+                            {{!-- <div class="nav-address">
+                                <p class="add-first">Deliver to</p>
+                                <div class="add-icon">
+                                    <i class="fa-solid fa-location-crosshairs"></i>
+                                    <p class="add-second">India</p>
+                                </div>
+                            </div> --}}
+
+                            <div class="nav-search">
+                                <select class="search-select">
+                                    <option selected="selected">All</option>
+                                    <option>Arts &amp; Crafts</option>
+
+                                </select>
+                                <input class="search-input" type="text" name="value" placeholder="Search....">
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                
+                            </div>
+                            {{!--
+                            <div class="nav-language">
+                                <i class="fa-solid fa-globe"></i> EN
+                                <span><i class="fa-sharp fa-solid fa-circle-chevron-down"></i></span>
+                            </div> --}}
+
+                            <div class="nav-signin">
+                                <div class="dropdown "></div>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle small-dropdown-btn"
+                                        style="background-color: white; color: black;" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        {{#if user}}
+                                        {{user.Username}}
+                                        {{else}}
+                                        Account
+                                        {{/if}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        {{#if user}}
+
+                                        <a class="dropdown-item" href="/profile">Profile</a>
+                                        <a class="dropdown-item" href="/Orders">Orders</a>
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                        {{else}}
+                                        <a class="dropdown-item" href="/login">Login</a>
+                                        {{/if}}
+                                        {{!-- <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a> --}}
+                                    </div>
+                                </div>
+                                {{!-- <p class="nav-second">
+                                    Account & Lists
+                                    <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+                                </p> --}}
+                            </div>
+                            {{#if user}}
+                            <a href="/wishlist" class="wishlist-icon" style="color: white;">
+                            <i class="fas fa-heart" style="font-size: 24px; color: red;"></i>Wishlist
+                            </a>
+
+                            {{!-- <div class="nav-returns">
+                                <p><span>Returns</span></p>
+                                <p class="nav-second">
+                                    Orders
+                                    <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+                                </p>
+                            </div> --}}
+                            {{/if}}
+
+
+                            <div class="nav-cart"></div>
+                            <a href="/cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Cart<span
+                                    class="badge badge-light">{{count}}</span>
+                            </a>
+                        </div>
+
+        </div>
+
+        {{!-- <div class="bottom-panel">
+            <div class="panel-alt">
+                <i class="fa-solid fa-bars"></i>
+                All
+            </div>
+            <div class="panel-options">
+                <p>Today's Deals</p>
+                <p>Customer Service</p>
+                <p>Registry</p>
+                <p>Gift Cards</p>
+                <p>Sell</p>
+            </div>
+            <div class="panel-deals">
+                Shop deals in Electronics
+            </div>
+        </div> --}}
+        </header>
+        {{!-- <div class="hero-section">
+            <a href="https://www.youtube.com/watch?v=IsOLMWJ75i0" target="_blank" class="youtube-link">
+                <iframe src="https://www.youtube.com/embed/IsOLMWJ75i0?autoplay=1&mute=1" frameborder="0"
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </a>
+        </div> --}}
+        <div class="hero-section">
+            <a href="/" target="_blank" class="logo-link">
+                <!-- Optional link to make logo clickable -->
+                <img src="/images/moto.jpg" alt="Logo" class="hero-logo" style="width: 100%; height: auto;" />
+
+            </a>
+        </div>
+
+
+
+
+        {{#each products}}
+
+        <div class="shop-section">
+            <div class="box1 box">
+                <!-- Dynamically set the background image from the product's Image field -->
+                <div class="box-img" style="background-image: url('{{this.Image}}');"></div>
+                <div class="box-content">
+                    <h2 style="font-size: 20px;">{{this.Name}}</h2>
+                    <h3 style="font-size: 20px;">₹{{this.Price}}</h3>
+
+                    <h5 style="font-size: 10px;">{{this.About}}</h5>
+                    <a href="/add-to-cart/{{this._id}}" class="btn btn-primary">Add to cart</a>
+                    <a href="/add-to-wishlist/{{this._id}}" class="btn btn-primary">Add to Wishlist</a>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+        {{!-- <div class="box2 box">
+            <div class="box-content">
+                <h2>Health & Personal Care</h2>
+                <div class="box-img" style="background-image: url('/Images/box2_image.jpg');"></div>
+                <p>See More</p>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Furniture</h2>
+                <div class="box-img" style="background-image: url('/Images/box3_image.jpg');"></div>
+                <p>See More</p>
+            </div>
+        </div>
+        <div class="box4 box">
+            <div class="box-content">
+                <h2>Mobiles</h2>
+                <div class="box-img" style="background-image: url('/Images/box4_image.jpg');"></div>
+                <p>See More</p>
+            </div>
+        </div>
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Beauty Pics</h2>
+                <div class="box-img" style="background-image: url('/Images/box5_image.jpg');"></div>
+                <p>See More</p>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Pet Care</h2>
+                <div class="box-img" style="background-image: url('/Images/box6_image.jpg');"></div>
+                <p>See More</p>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>New Arrival in Toys</h2>
+                <div class="box-img" style="background-image: url('/Images/box7_image.jpg');"></div>
+                <p>See More</p>
+            </div>
+        </div>
+        <div class="box4 box">
+            <div class="box-content">
+                <h2>Discover Fashion Trends</h2>
+                <div class="box-img" style="background-image: url('/Images/box8_image.jpg');"></div>
+                <p>See More</p>
+            </div>
+        </div> --}}
+    </div>
+    {{/each}}
+
+    <footer>
+        <div class="foot-panel1">
+            Back to Top
+        </div>
+
+        <div class="foot-panel2">
+            <ul>
+                <li>Connect us</li><br>
+                <li><a href="https://maps.app.goo.gl/P53nyJmHS6Ezmj238">Full Moto Private Limited,13/412/c, Near
+                        Dheshaboshni Library,<br> Kuthiravattom Road,
+                        673016 Pottammal,Calicut, Kerala, India</a></li><br>
+              <li><a href="mailto fullmoto@gmail.com"><i class="fas fa-envelope"></i> fullmoto@gmail.com</a></li><br>
+
+                <li><a href="#">Contact: 7403182552</a></li><br>
+                <li><a href="#">For online orders: 8289820032</a></li><br>
+                <a class="btn btn--primary" href="">message us</a><br>
+
+                {{!-- <li><a href="#">Press Center</a></li><br> --}}
+                {{!-- <li><a href="#">Investor Relations</a></li><br> --}}
+                {{!-- <li><a href="#">Amazon Devices</a></li> --}}
+                {{!-- <li><a href="#">Amazon Science</a></li> --}}
+            </ul>
+            <ul>
+                <li>About FullMoto</li><br>
+                <li><a href="/photos">Photos</a></li><br>
+                <li><a href="#">Videos</a></li><br>
+                <li><a href="https://maps.app.goo.gl/P53nyJmHS6Ezmj238">Site Map</a></li><br>
+                <li><a href="#">Contact Us</a></li><br>
+                <li><a href="#">Brands</a></li><br>
+                {{!-- <li><a href="#">Self-Publish with Us</a></li> --}}
+                {{!-- <li><a href="#">Host an Amazon Hub</a></li> --}}
+                {{!-- <li><a href="#">See More Make Money with Us</a></li> --}}
+            </ul>
+            {{!-- <ul>
+                <li>Amazon Payment Products</li>
+                <li><a href="#">Amzon Business Card</a></li>
+                <li><a href="#">Shop with Points</a></li>
+                <li><a href="#">Reload Your Balance</a></li>
+                <li><a href="#">Amazon Currency Converter</a></li>
+            </ul> --}}
+            <ul>
+                <li>Delivery Returns</li><br>
+                <li><a href="/privacy-policy">Privacy Policy</a></li><br>
+                <li><a href="/terms-conditions">Terms & Conditions</a></li><br>
+                <li><a href="/returns">Returns & Refund</a></li><br>
+                <li><a href="/cancellation">Cancellation Policy</a></li><br>
+                <li><a href="/shipping-policy">Shipping Policy</a></li><br>
+                {{!-- <li><a href="#">Manage Your Content and Devices</a></li> --}}
+                {{!-- <li><a href="#">Amazon Assistant</a></li> --}}
+                {{!-- <li><a href="#">Help</a></li> --}}
+            </ul>
+            {{!-- Add this Font Awesome CDN link in your
+
+            <head> section --}}
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+                <ul>
+                    <li>
+                        <a href="https://twitter.com" target="_blank">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </a><br><br>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com" target="_blank">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a><br><br>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com" target="_blank">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a><br><br>
+                    </li>
+                </ul>
+
+        </div>
+
+        <div class="foot-panel3">
+            <div class="logo">
+
+            </div>
+        </div>
+
+        <div class="foot-panel4">
+            <div class="pages">
+                <a href="#">Conditions of Use</a>
+                <a href="#">Privacy Notice</a>
+                <a href="#">Your Ads Privacy Choices</a>
+            </div>
+            <div class="copyright">
+                © 1996-2023, Amazon.com, Inc. or its affiliates
+            </div>
+        </div>
+    </footer>
+    </body>
+
+    </html>

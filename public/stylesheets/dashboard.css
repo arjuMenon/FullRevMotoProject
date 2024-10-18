@@ -1,0 +1,9 @@
+.dropdown-menu.custom-dark {
+    background-color:red ; /* Dark background */
+  }
+  .dropdown-menu.custom-dark .dropdown-item {
+    color: black; /* White text */
+  }
+  .dropdown-menu.custom-dark .dropdown-item:hover {
+    background-color: #495057; /* Slightly lighter dark on hover */
+  }

@@ -1,0 +1,491 @@
+
+ <!DOCTYPE html>
+                <html lang="en">
+
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Amazon</title>
+                    <!-- Font Awesome -->
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+                        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+                        crossorigin="anonymous" referrerpolicy="no-referrer" />
+                    <!-- CSS -->
+                    <link rel="stylesheet" href="/stylesheets/style.css">
+
+                </head>
+
+                <body>
+                    <header>
+                        <div class="navbar">
+                            <div class="nav-logo">
+                                <div class="logo"></div>
+                            </div>
+
+                            {{!-- <div class="nav-address">
+                                <p class="add-first">Deliver to</p>
+                                <div class="add-icon">
+                                    <i class="fa-solid fa-location-crosshairs"></i>
+                                    <p class="add-second">India</p>
+                                </div>
+                            </div> --}}
+
+                            <div class="nav-search">
+                                <select class="search-select">
+                                    <option selected="selected">All</option>
+                                    <option>Arts &amp; Crafts</option>
+
+                                </select>
+                                <input class="search-input" type="text" name="value" placeholder="Search....">
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            </div>
+                            {{!--
+                            <div class="nav-language">
+                                <i class="fa-solid fa-globe"></i> EN
+                                <span><i class="fa-sharp fa-solid fa-circle-chevron-down"></i></span>
+                            </div> --}}
+
+                            <div class="nav-signin">
+                                <div class="dropdown "></div>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle small-dropdown-btn"
+                                        style="background-color: white; color: black;" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        {{#if user}}
+                                        {{user.Username}}
+                                        {{else}}
+                                        Account
+                                        {{/if}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        {{#if user}}
+
+                                        <a class="dropdown-item" href="/profile">Profile</a>
+                                        <a class="dropdown-item" href="/">Home</a>
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                        {{else}}
+                                        <a class="dropdown-item" href="/login">Login</a>
+                                        {{/if}}
+                                        {{!-- <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a> --}}
+                                    </div>
+                                </div>
+                                {{!-- <p class="nav-second">
+                                    Account & Lists
+                                    <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+                                </p> --}}
+                            </div>
+                            {{#if user}}
+                            <a href="/wishlist" class="wishlist-icon" style="color: white;">
+                            <i class="fas fa-heart" style="font-size: 24px; color: red;"></i>Wishlist
+                            </a>
+
+                            {{!-- <div class="nav-returns">
+                                <p><span>Returns</span></p>
+                                <p class="nav-second">
+                                    Orders
+                                    <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+                                </p>
+                            </div> --}}
+                            {{/if}}
+
+
+                            <div class="nav-cart"></div>
+                            <a href="/cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Cart<span
+                                    class="badge badge-light">{{count}}</span>
+                            </a>
+                        </div>
+
+        </div>
+
+
+
+
+
+
+{{#each product}}
+<div class="shop-section">
+    <div class="box1 box">
+        <div class="box-img" style="background-image: url('{{this.product.Image}}'); width:100px; height:100px"></div>
+        <div class="box-content">
+            <h2 style="font-size: 20px;">ORDER PLACED {{this.Date}}</h2>
+            <h3 style="font-size: 20px;">PAYMENT-METHOD: {{this.PaymentMethod}}</h3>
+            <h3 style="font-size: 20px;">STATUS: {{this.Status}}</h3>   
+            <h2 style="font-size: 20px;">PRODUCT NAME: {{this.product.Name}}</h2>
+            <h3 style="font-size: 20px;">TOTAL: ₹{{this.product.Price}}</h3>
+            <h3 style="font-size: 20px;">QUANTIY: {{this.quantity}}</h3>
+        </div>
+    </div>
+</div>
+{{/each}}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap');
+
+* {
+    
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+.small-dropdown-btn {
+    font-size: 12px; /* Smaller font size */
+    padding: 5px 10px; /* Smaller padding */
+    height: auto; /* Adjust height */
+    width: auto; /* Adjust width */
+  }
+
+/** navbar **/
+.navbar {
+    height: 87px;
+    background-color: #0f1111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.nav-logo {
+    height: 50px;
+    width: 100px;
+}
+
+
+.logo {
+    background-image: url(/images/logo.jpg);
+    height: 50px;
+    width: 100%;
+    background-size: cover;
+}
+
+.add-first {
+    color: #cccccc;
+    font-size: 0.75rem;
+    font-weight: 100;
+}
+
+.nav-second {
+    font-size: 15px;
+}
+
+.add-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    margin-left: 25px;
+    width: 600px;
+    height: 40px;
+    padding: 10px 0px 10px 0px;
+    border-radius: 30px;
+}
+
+.nav-search:hover {
+    border: 2px solid #febd68;
+}
+
+.search-select {
+    background-color: #f3f3f3;
+    height: 40px;
+    width: 73px;
+    padding: 0 0 0 10px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border: 2px solid #febd68;
+    outline: none;
+}
+
+.search-input {
+    
+    margin-left: 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.search-icon {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    width: 63px;
+    height: 40px;
+    
+    color: white;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+span {
+    font-size: 0.75rem;
+}
+
+
+a {
+    color: greenyellow;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.nav-cart {
+    font-size: 0.7rem;
+}
+
+.badge {
+    display: ruby-text;
+    width: -8px;
+    height: -16px;
+    border-radius: 77%;
+    text-align: center;
+    line-height: -31px;
+    background-color: greenyellow;
+    color: #000;
+    font-weight: bold;
+}
+
+.nav-cart i {
+    font-size: 1.6rem;
+}
+
+/** bottom panel **/
+.bottom-panel {
+    height: 40px;
+    background-color: #222f3d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.btn--primary, .spr-button-primary, .shopify-payment-button .shopify-payment-button__button--unbranded, .shopify-challenge__button {
+    outline-color: rgb(var(--btn-bg-color));
+    outline-offset: 3px;
+    background-image: none; /* If you don’t want any background image */
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-origin: border-box;
+    background-clip: padding-box;
+    background-color: rgb(var(--btn-bg-color)); /* This should set the button's background */
+    background-size: 300% 100%;
+    color: rgb(var(--btn-text-color));
+    border: var(--btn-border-width) solid rgb(var(--btn-bg-color)); 
+    background-color:whitesmoke ;/* Ensure --btn-border-width is set */
+    color: #0f1111;
+}
+.btn-primary {
+    height: 37px;
+    width: 25%;
+    color: black;
+    border-color: wheat;
+    background-color: greenyellow;
+    border-radius: 10px;
+}
+
+
+.panel-options {
+    width: 70%;
+    font-size: 0.85rem;
+}
+
+.panel-options p {
+    display: inline;
+    margin-left: 10px;
+}
+
+/** hero sectrion **/
+.hero-section {
+    height: 100%; /* Full height of the viewport */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: black; /* Optional background color */
+}
+
+.hero-logo {
+    max-width: 100%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+    width: 300px; /* Set a specific width, adjust as needed */
+}
+
+/* .hero-section .youtube-link {
+    display: block;
+    width: 46%;
+    height: 100%;
+    position: relative;
+}
+.hero-section iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none; /* Removes iframe border */
+/* } */ */
+
+
+.hero-msg {
+    height: 40px;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    width: 90%;
+    margin-bottom: 25px;
+    border-radius: 30px;
+}
+
+.hero-msg a {
+    text-decoration: none;
+    color: #007185;
+}
+
+/** shop section **/
+.shop-section {
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: black;
+    padding-bottom: 20px;
+}
+
+.box {
+    border-radius: 35px;
+    height: 350px;
+    width: 90%;
+    background-color: #161716;
+    padding: 15px 0px 15px;
+    margin-top: 25px;
+    color: whitesmoke;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.box-img {
+    height: 63%;
+    width: 299px;
+    border-radius: 10px;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    background-size: cover;
+}
+
+.box-content {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+h2 {
+    font-size: 20px;
+}
+
+.box-content p {
+    color: #007185;
+    font-size: 14px;
+}
+
+/** footer **/
+.foot-panel1 {
+    background-color: #161716;
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    background: #161716;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+.foot-panel2 {
+    background-color: black;
+    color: white;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+ul {
+    
+    margin-top: 30px;
+}
+
+ul li,
+li a {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+}
+
+li a {
+    font-size: 0.85rem;
+    margin-top: 10px;
+    color: #dddddd;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+.foot-panel3 {
+    border-top: 0.5px solid gray;
+    height: 70px;
+    background-color: #161716;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foot-panel3 .logo {
+    background-image: url(/Images/amazon_logo.png);
+    background-size: cover;
+    height: 50px;
+    width: 100px;
+}
+
+.foot-panel4 {
+    background-color: #131A22;
+    color: white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pages a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.7rem;
+    margin-left: 5px;
+}
+
+.pages a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+/* search bar */
+
+</style>

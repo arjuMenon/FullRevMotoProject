@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="login_section">
+        <div class="login_heading">
+            <h1>Admin Login</h1>
+        </div>
+        <div class="error_msg">
+            {{#if error}}
+                <p style="color:red">{{error}}</p>  <!-- Display the error message -->
+            {{/if}}
+            
+        </div>
+        <form action="/admin/login" method="post">
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" required>
+            </div>
+            <div>
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </section>
+</body>
+</html>
+<style>
+       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Work+Sans:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+
+:root {
+  --para-color: #939393;
+  --main-heading: #ff8b00;
+  --white: #ffffff;
+  --black: #000000;
+  --bg-color: #222;
+  --btn-bg-color: #ff8b00;
+  --hover-color: #fd7e14;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+h2,
+h3,
+h4 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: var(--main-heading);
+}
+
+h3,
+h4 {
+  color: var(--white);
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: 1.7rem;
+  color: var(--para-color);
+}
+
+ul {
+  list-style: none;
+}
+
+.section {
+  padding: 10rem 8rem;
+  background-color: var(--bg-color);
+  width: 100%;
+  min-height: 100vh;
+}
+
+.section-heading {
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+}
+
+header {
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--bg-color);
+  /* position: fixed; */
+  /* top: 0; */
+  /* z-index: 1; */
+}
+
+.logo {
+  color: var(--main-heading);
+  font-size: 2.5rem;
+}
+
+header ul {
+  display: flex;
+  gap: 5rem;
+}
+
+.nav-link {
+  font-size: large;
+  color: var(--white);
+  transition: all 0.5s linear;
+}
+
+.nav-link:hover {
+  color: var(--hover-color);
+}
+
+.home-link {
+  color: var(--main-heading);
+}
+
+.hero-section {
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-heading {
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 500;
+  padding: 1rem 25rem;
+  text-align: center;
+}
+
+.section-pera {
+  color: var(--white);
+  font-size: 2rem;
+  padding: 0 33rem;
+  text-align: center;
+}
+
+.btn {
+  border: 2px solid var(--white);
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  color: var(--white);
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.btn-primary {
+  background-color: transparent;
+  margin-top: 5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+section {
+  width: 100vw;
+  height: 87vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+section .heading {
+  width: 30%;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+section .msg p {
+  color: red;
+}
+
+section form {
+  width: 30%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+section form div {
+  width: 100%;
+}
+
+section form div label {
+  font-size: 1.8rem;
+}
+
+section form div input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 1.6rem;
+  outline: none;
+}
+
+section form div input[type="submit"] {
+  background-color: #ff8b00;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.login_section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.login_section p {
+  color: red;
+}
+
+.login_section form {
+  height: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login_section form div {
+  margin-top: 2rem;
+}
+/* navbar */
+
+
+
+
+
+</style>

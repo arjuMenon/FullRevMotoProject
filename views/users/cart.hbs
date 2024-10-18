@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<title>Ecommerce Website | Product Page Design</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!--boxicons-->
+	<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+	<!--local css-->
+	<link rel="stylesheet" href="stylesheets/cart.css" />
+</head>
+<div class="container">
+	<header>
+		<nav>
+			<div class="main-nav">
+				<div class="logo"><span>C</span>art</div>
+				<ul>
+					<li><a href="/">Store</a></li>
+					<li><a href="/">Product</a></li>
+					{{!-- <li><a href="#">New</a></li> --}}
+					<li><a href="#">Blog</a></li>
+				</ul>
+			</div>
+			<div class="wrapper">
+				{{!-- <div class="dropdown">
+					<form name="form">
+						<select name="items" onchange="getSelectedItems()">
+							<option>Select Item</option>
+							<option value="laptop">Laptop</option>
+							<option value="tablet">Tablet</option>
+							<option value="iphone">iphone</option>
+							<option value="computer">Computer</option>
+						</select>
+					</form>
+				</div> --}}
+
+				<label id="msg"></label>
+
+
+
+				<img src="/images/logo.jpg" alt="Logo" class="hero-logo" style="width: 75%; height: 80px;" />
+
+
+				{{!-- <div class="search">
+					<input type="text" placeholder="search product...." id="input-search" />
+					<i class="bx bx-search-alt-2"></i>
+				</div> --}}
+
+				<div class="cart">
+					<i class="bx bxs-cart"></i><span class="count">{{count}}</span>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<h1>Shopping Cart</h1>
+		<section>
+
+			<div class="card-container">
+				{{!-- <div class="container"></div> --}}
+				<table class="table mt-5">
+					<thead>
+						<tr>
+							<th scope="col">Item</th>
+							<th scope="col">Title</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Options</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each product}}
+						<tr>
+
+
+							<td>
+								<img style="width: 70px;height:70px" src="{{this.product.Image}}.jpg" alt="">
+							</td>
+							<td>{{this.product.Name}}</td>
+							<td>
+
+								<button class="cart-item-count"
+									onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{this.user}}',-1)">-</button>
+								<span id="{{this.product._id}}">{{this.quantity}}</span>	
+								<button class="cart-item-count"
+									onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{this.user}}',1)">+</button>
+							</td> 
+							<td>
+								<a href="#" class="btn btn-danger"
+									onClick="removeProduct('{{this._id}}', '{{this.product._id}}')">Remove</a>
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+			</div>
+			<aside class="sidebar">
+				<div class="cart-head">
+					<h2>Your Cart</h2>
+				</div>
+				<div class="cartItem">{{this.count}} Items selected</div>
+				<div class="cart-footer">
+					<h4>Total:</h4>
+					<h3 id="total">₹<span id="total">{{totalValue}}</span></h3>
+				
+					
+				</div>
+				<div class="button" style="color:white">
+					 <a href="/place-order{{this._id}}" class="btn btn-primary">Place order</a>
+				</div>
+			</aside>
+			<!----card img--->
+</div>
+</section>
+</main>
+</div>
+
+<body>
+	{{!-- <div id="app"></div> --}}
+
+	<script src="./js/product.js"></script>
+	<script src="./js/app.js"></script>
+</body>
+
+</html>
+<script>
+
+	function changeQuantity(cartId, proId,userId,count) {
+		let quantity=parseInt(document.getElementById(proId).innerHTML)
+		count=parseInt(count)
+		$.ajax({
+			url: '/change-product-quantity/',
+			data: {
+				user:userId,
+				cart: cartId,
+				product: proId,
+				count: count,
+				quantity:quantity
+			},
+			method: 'post',
+			success: (response)=>{
+				if(response.removeProduct){
+				alert('Product removed successfully');
+				location.reload();
+				}else{
+					document.getElementById(proId).innerHTML=quantity+count
+					document.getElementById('total').innerHTML=response.total
+				}
+
+
+			}
+		})
+	}
+</script>
+<script>
+	function removeProduct(cartId, proId) {
+		// Prevent the default behavior of the anchor tag
+		event.preventDefault();
+
+		$.ajax({
+			url: '/remove-product/',
+			method: 'POST',
+			data: {
+				cart: cartId,
+				product: proId
+			},
+
+			success: (response) => {
+				alert('Product removed successfully!');
+				location.reload();  // Reload the page to reflect changes
+			},
+			error: (err) => {
+				alert('Error removing product');
+				console.log(err);
+			}
+		});
+	}
+</script>
+
+{{!-- function removeProduct(cartId,proId){
+$.ajax({
+url:'/remove-product/',
+data:{
+cart:cartId,
+product:proId
+},
+method:'post',
+success:(response)=>{
+alert('Please refresh the page')
+}
+})
+
+} --}}
+
+</script>
+<script>
+	let gt = function (a, b) {
+		return a > b;
+	}
+</script>

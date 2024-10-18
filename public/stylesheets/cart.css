@@ -1,0 +1,376 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+/*======REST======*/
+*::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    color: white;
+}
+h4,h1,h2,h3,h5,h6{
+    color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+}
+
+/*======VARIABLES=======*/
+/*---COLOR---*/
+body {
+  background-color: black;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  transition: all 0.3s linear;
+}
+
+/*======CONTAINE=======*/
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+/*======HEADER=======*/
+/* header {
+  /*------NAVBAR------*/
+/* } */ */
+header nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px;
+    background-color:#161716;
+    
+  padding: 1.25rem;
+  /*---WRAPPER---*/
+}
+header nav .main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header nav .main-nav .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: white;
+}
+header nav .main-nav .logo span {
+  color: greenyellow;
+}
+header nav .main-nav p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: greenyellow;
+}
+header nav .main-nav ul {
+  display: flex;
+}
+header nav .main-nav ul li {
+  padding: 0.7rem 1rem;
+}
+header nav .main-nav ul li a {
+  font-size: 1.1rem;
+  color: white;
+  transition: all 0.5s ease;
+}
+header nav .main-nav ul li a:hover {
+  background-color: #3e416b;
+  color: greenyellow;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1rem;
+}
+header nav .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*----DROPDOW----*/
+  /*----SEARCH----*/
+  /*----CART----*/
+}
+header nav .wrapper .dropdown {
+  width: 130px;
+  text-align: center;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+header nav .wrapper .dropdown select {
+  background: none;
+  padding: 0.7rem 0.625rem 0.7rem 0;
+  color: #3e416b;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+header nav .wrapper .search {
+  width: 31.25rem;
+  background-color: white;
+  height: 2.8125rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+header nav .wrapper .search input {
+  width: 100%;
+  height: 2rem;
+}
+header nav .wrapper .search i {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+header nav .wrapper .cart {
+  display: flex;
+  background-color: greenyellow;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0.625rem;
+  border-radius: 0.5rem;
+  width: 5rem;
+  font-size: 1.5rem;
+}
+header nav .wrapper span {
+  height: 1.375rem;
+  width: 1.378rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border-radius: 2rem;
+}
+
+/*-----MAIN-------*/
+main h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+  margin-bottom: 2rem;
+  position: relative;
+  margin-top: 2rem;
+}
+main h1::after {
+  content: "";
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  top: 95%;
+  left: 50%;
+  height: 0.2rem;
+  width: 12rem;
+  background-color: #1980e1;
+}
+
+/*-----SECTION-------*/
+section {
+  display: flex;
+  margin-bottom: 4.25rem;
+  /*----ADD CART-----*/
+}
+
+section .card-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+section aside {
+  margin-top: 48px;
+  width: 86%;
+  background-color: #161716;
+  border-radius: 4.3rem;
+  margin-left: 1.25rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+section aside .cart-head {
+  background-color: #161716;
+  border-radius: 5rem;
+  padding: 1.5rem;
+  height: 2.5rem;
+  margin-bottom: 1.25rem;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+section aside .cart-head h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+section aside .cart-footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.25rem 0;
+  padding: 0.625rem 0;
+  border-top: 0.1rem solid #3e416b;
+}
+.table {
+  height: 100%;
+  width: 107%;
+  max-width: 138%;
+  margin-bottom: 0rem;
+  background-color: #161716;
+  margin-left: -29px;
+  color: white;
+  border-collapse: collapse; 
+  border-radius: 33px;
+  
+}
+
+.table th,
+.table td {
+  width: 0px;
+    border: none; /* No border for table cells */
+}
+
+section .card {
+  
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+  border: 0.2rem solid #ccc;
+  border-radius: 0.5rem;
+}
+section .body-img {
+  width: 100%;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+}
+section .content h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0.9rem;
+}
+section .content span {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-top: 0.9rem;
+}
+section button {
+  width: 52px;
+  font-size: 13px;
+  padding: 0.625rem 1.25rem;
+  background-color: aliceblue;
+  border-radius: 5rem;
+  margin-top: 0.9rem;
+  color: black;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+section button:hover {
+  background-color: #3e416b;
+}
+section .cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem;
+  background-color: white;
+  border-bottom: 0.1rem solid #3e416b;
+  border-radius: 0.4rem;
+  margin: 0.625rem 0.625rem;
+}
+section .cart-item .box-img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10rem;
+  border: 0.1rem solid #3e416b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section .cart-item .rowimg {
+  max-width: 3rem;
+  max-height: 3rem;
+  border-radius: 50%;
+}
+section .cart-item .bxs-trash {
+  color: #c55959;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+/*=====MEDIA QUERY=====*/
+@media (max-width: 968px) {
+  /*---WRAPPER--*/
+  section .card-container {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  section .wrapper {
+    display: grid;
+    row-gap: 1rem;
+    gap: 1rem;
+  }
+  section aside {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  /*---WRAPPER--*/
+  section {
+    flex-wrap: wrap;
+  }
+  section .card-container {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+  section aside {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .wrapper {
+    flex-wrap: wrap;
+  }
+
+  .search input {
+    width: 100%;
+    height: 2rem;
+  }
+}
+.cartItem{
+  color:aliceblue
+
+}
+.btn-primary{
+  color: black;
+  background-color: white;
+  border-color: black;
+  border-radius: 22px;
+  font-family: fantasy;
+}
+
+/*# sourceMappingURL=styles.css.map */

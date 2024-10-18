@@ -1,0 +1,81 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="container d-flex">
+                <!-- Add product button hidden in comments -->
+                <!-- <a style="margin-left: auto;" href="/admin/add-products"><button class="btn btn-success">ADD PRODUCTS</button></a> -->
+            </div>
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Orders List</h6>
+                <div class="table-responsive">
+                    <table id="productTable" class="table table-bordered" style="border-color:rgb(90, 90, 90);">
+                        <thead>
+                            <tr>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">User ID</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Date</th>
+
+                                <th scope="col">Action</th> <!-- Only one action column -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each orders}}
+                            <tr>
+                                <td>{{this._id}}</td>
+                                <td>{{this.User}}</td>
+                                <td>{{this.TotalAmount}}</td>
+                                <td>{{this.PaymentMethod}}</td>
+                                <td>
+                                    {{this.Status}}
+                                    <a href="/admin/delivered/{{this._id}}" class="btn btn-primary">Delivered</a>
+                                </td>
+                                <td>{{this.Date}}</td>
+
+                                <td>
+                                    <!-- Delete Button -->
+                                    <a href="/admin/cancel-order/{{this._id}}">
+                                        <button class="text-white"
+                                            style="background-color: rgb(22, 17, 17);border-color: rgb(196, 24, 24);border-radius:5px; width: 90px;border-width: 4px"
+                                            onclick="return confirm('Do you want to cancel {{this.User}}?')">CANCEL</button>
+                                    </a>
+                                    
+
+                                    {{!-- <!-- Edit Button -->
+                                    <a href="/admin/block-user/{{this._id}}">
+                                        <button class="text-white"
+                                            style="background-color: rgb(22, 17, 17);border-color: rgb(39, 216, 51);border-radius:5px; width: 90px;border-width: 4px">BLOCK</button>
+                                    </a> --}}
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include DataTables CSS and JS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#productTable').DataTable();
+    });
+</script>
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .bg-secondary {
+        background-color: white !important;
+        color: black;
+    }
+</style>

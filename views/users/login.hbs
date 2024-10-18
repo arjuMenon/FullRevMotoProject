@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="stylesheets/signup.css" />
+</head>
+<body>
+    <div class="signup-container">
+        <h2>LOGIN</h2>
+
+        <!-- Display error message if it exists -->
+        {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+        
+
+        <form action="/login" method="POST">
+            <div class="signup-input-fields">
+                <b>EMAIL</b>
+                <input type="email" name="email" required>
+                <b>USERNAME</b>
+                <input type="text" name="username" required>
+                <b>PASSWORD</b>
+                <input type="password" name="password" required>
+            </div>
+            <button type="submit" value="Sign In">Sign In</button>
+        </form>
+        <a href="/signup">Forgot Password</a>
+    </div>
+</body>
+</html>

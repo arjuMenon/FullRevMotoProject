@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ecommerce Website | Product Page Design</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--boxicons-->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <!--local css-->
+    <link rel="stylesheet" href="stylesheets/wishlist.css" />
+</head>
+<div class="container">
+    <header>
+        <nav>
+            <div class="main-nav">
+                <div class="logo"><span>Wish</span>list</div>
+                <ul>
+                    <li><a href="/">Store</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="#">New</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="wrapper">
+                {{!-- <div class="dropdown">
+                    <form name="form">
+                        <select name="items" onchange="getSelectedItems()">
+                            <option>Select Item</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="iphone">iphone</option>
+                            <option value="computer">Computer</option>
+                        </select>
+                    </form>
+                </div> --}}
+                <label id="msg"></label>
+
+                {{!-- <div class="search">
+                    <input type="text" placeholder="search product...." id="input-search" />
+                    <i class="bx bx-search-alt-2"></i>
+                </div> --}}
+
+                <div class="cart">
+                    <i class="bx bxs-cart"></i><span class="count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Shopping Cart</h1>
+        <section>
+            <div class="card-container">
+                <!----card img--->
+            </div>
+            <aside class="sidebar">
+                <div class="cart-head">
+                    <h2>My Wishlist</h2>
+                </div>
+                {{#each products}}
+                <div class="shop-section">
+                    <div class="box1 box">
+                        <!-- Dynamically set the background image from the product's Image field -->
+                     <img src="{{this.Image}}" style="display: block; margin: auto; width: 300px; height: auto;" alt="{{this.Name}}">
+
+                        <div class="box-content">
+                            <h2 style="font-size: 20px;">{{this.Name}}</h2>
+                            <h3 style="font-size: 20px;">{{this.Price}}</h3>
+                            <a href="/add-to-cart/{{this._id}}" class="btn btn-primary">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+
+                {{!-- {{#each products}}
+
+                <div class="box1 box">
+                    <!-- Dynamically set the background image from the product's Image field -->
+                    <div class="box-img" style="background-image: url('{{this.Image}}');"></div>
+                    <div class="box-content">
+                        <h2 style="font-size: 20px;">{{this.Name}}</h2>
+                        <h3 style="font-size: 20px;">{{this.Price}}</h3>
+
+
+                        <a href="/add-to-cart/{{this._id}}" class="btn btn-primary">Add to cart</a>
+
+
+
+                    </div>
+                </div>
+                {{/each}} --}}
+
+</div>
+
+{{!-- <div class="cartItem">cart is empty</div>
+<div class="cart-footer">
+    <h4>Total:</h4>
+    <h3 id="total">£ 0.00</h3>
+</div> --}}
+</aside>
+</section>
+</main>
+</div>
+
+<body>
+    <div id="app"></div>
+
+    <script src="./js/product.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

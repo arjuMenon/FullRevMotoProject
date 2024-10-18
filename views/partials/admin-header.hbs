@@ -1,0 +1,59 @@
+{{#if isLoginPage }}
+{{else}}
+
+  <header>
+    
+    
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">FULL MOTO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+            <a class="nav-link" href="/admin/products">ALL PRODUCTS<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item"> 
+            <a class="nav-link" href="/admin/allUsers">ALL USERS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="/admin/allOrders">ALL ORDERS</a>
+        </li>
+        </ul>
+       
+
+<div class="dropdown ml-auto">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{#if admin}}
+
+    {{admin.Email}}
+
+    {{else}}
+    ACCOUNT
+
+    {{/if}}
+  </button>
+ 
+
+
+  <div class="dropdown-menu dropdown-menu-right custom-dark" aria-labelledby="dropdownMenu2">
+    {{#if admin}}
+      <a class="dropdown-item btn btn-secondary w-100" href="/admin/logout">LOGOUT</a>
+
+   {{else}}
+   <a class="dropdown-item btn btn-secondary w-100" href="/admin/login">LOGIN</a>
+   {{/if}}
+
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+    </div>
+    </div>
+    </div>
+    </nav>
+        </header>
+{{/if}}

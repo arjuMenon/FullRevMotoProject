@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <link rel="stylesheet" type="text/css" href="stylesheets/signup.css" />
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create an account</h2>
+        <form action="/signup" method="POST">
+            <div class="signup-input-fields">
+                <b>EMAIL</b>
+                <input type="email" name="email" >
+                <b>USERNAME</b>
+                <input type="text" name="username"  required>
+                <b>PASSWORD</b>
+                <input type="password" name="password"  required>
+                 <b>CONFIRM PASSWORD</b>
+                <input type="password" name="confirmPassword" required>
+            </div>
+            <button type="submit" value="Sign Up">Signup</button>
+        </form>
+        <a href="/login">Already have an account?</a>
+    </div>
+</body>
+</html>
+
+</html>

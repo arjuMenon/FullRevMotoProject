@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Profile</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+   
+    <nav>
+      <div class="brand">
+        <a href="/">MY ACCOUNT</a>
+      </div>
+      <div class="logo">
+        <img src="/images/logo.jpg" alt="Logo" class="hero-logo" style="width: 100%; height: 90px;" />
+
+      </div>
+      <div class="nav-items">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+        {{!-- <a href="../shop/index.html">Shop</a> --}}
+        <a href="/cart">My Cart</a>
+        {{!-- <a href="../profile/index.html">Profile</a> --}}
+      </div>
+    </nav>
+
+    <div style="padding-bottom: 0;" class="container">
+      <div style="font-size: 30px; margin-bottom: 20px; text-align: center; font-weight: 600;">Personal Details</div>
+       {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+        {{!-- {{else}}
+        <div class="alert alert-success">{{ok}}</div> --}}
+      <form id="inputs" action="/saveInfo" method="post" class="inputs">
+      <b>First Name</b>
+      
+          <input type="text" placeholder="{{response.FirstName}}" id="firstName" name="firstName">
+          <b>Last Name</b>
+          <input type="text" placeholder="{{response.LastName}}" id="lastName" name="lastName">
+          <b>Address</b>
+          <input type="text" placeholder="{{response.Address}}" id="address" name="address">
+          <b>Phone Number</b>
+          <input type="text" placeholder="{{response.PhoneNumber}}" id="phoneNumber" name="phoneNumber"> 
+  
+          <div>
+            <button type="submit" id="save-info">Save Info</button>
+            <span style="width: fit-content; margin-left: 20px;" id="message">asdsad</span>
+        </div>
+  
+      </form>
+  
+    </div>
+  
+    <div style="padding-top: 0px;" class="container">
+      <div style="font-size: 30px; margin-bottom: 20px; text-align: center; font-weight: 600;">Edit Password</div>
+   {{#if err}}
+  <div class="alert alert-danger">{{err}}</div>
+{{else}}
+  {{#if ok}}
+    <div class="alert alert-success">{{ok}}</div>
+  {{/if}}
+{{/if}}
+
+<form id="inputs2" action="/changePassword" method="post" class="inputs">
+    <input type="password" placeholder="Old Password" id="oldPass" name="oldPass" required>
+    <input type="password" placeholder="New Password" id="newPass" name="newPass" required>
+    <input type="password" placeholder="Confirm New Password" id="confNewPass" name="confNewPass" required>
+
+    <div class="buttons"> 
+        <button type="submit" id="change-pass">Change Password</button>
+        <span style="width: fit-content; margin-left: 20px;" id="message2"></span>
+        {{!-- <button id="logout">Logout</button> --}}
+    </div>
+</form>
+
+  
+  
+  
+  
+      </form>
+  
+    </div>
+
+    <script src="./script.js" async defer></script>
+  </body>
+</html>
+<style>
+    /* Write your styles here */
+
+/* Write your styles here */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  ul {
+    list-style: none;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: sticky;
+    z-index: 100;
+    top: 0;
+  
+    background-color: black;
+    border-bottom: 1px solid white;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  nav .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  nav .nav-items a {
+    margin: 0 1rem;
+  }
+ .logo {
+    margin-left: 177px;
+    width: 26%;
+}
+
+  .container{
+    padding: 40px;
+}
+
+.inputs{
+    display: flex;
+    flex-flow: column ;
+    gap: 10px;
+}
+.inputs input{
+    height: 40px;
+    padding: 10px;
+}
+
+button{
+    margin-top: 5px;
+    color: white;
+    background-color: black;
+    width: 170px;
+    height: 40px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+.red{
+  color:red;
+  font-weight: 600;
+}
+
+.green{
+  color: rgb(8, 113, 8);
+  font-weight: 600;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#message{
+  display: none;
+}
+
+#message2{
+    display: none;
+  }
+  
+</style>

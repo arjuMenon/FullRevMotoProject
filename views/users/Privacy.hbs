@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+
+<body class="body">
+    <header>
+        <div class="navbar">
+            <div class="nav-logo">
+                <div class="logo"></div>
+            </div>
+
+            {{!-- <div class="nav-address">
+                <p class="add-first">Deliver to</p>
+                <div class="add-icon">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <p class="add-second">India</p>
+                </div>
+            </div> --}}
+
+            <div class="nav-search">
+                <select class="search-select">
+                    <option selected="selected">All</option>
+                    <option>Arts &amp; Crafts</option>
+
+                </select>
+                <input class="search-input" type="text" name="value" placeholder="Search....">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+            {{!--
+            <div class="nav-language">
+                <i class="fa-solid fa-globe"></i> EN
+                <span><i class="fa-sharp fa-solid fa-circle-chevron-down"></i></span>
+            </div> --}}
+
+            <div class="nav-signin">
+                <div class="dropdown "></div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle small-dropdown-btn"
+                        style="background-color: white; color: black;" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{#if user}}
+                        {{user.Username}}
+                        {{else}}
+                        Account
+                        {{/if}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {{#if user}}
+
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/Orders">Orders</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                        {{else}}
+                        <a class="dropdown-item" href="/login">Login</a>
+                        {{/if}}
+                        {{!-- <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a> --}}
+                    </div>
+                </div>
+                {{!-- <p class="nav-second">
+                    Account & Lists
+                    <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+                </p> --}}
+            </div>
+            {{#if user}}
+            <a href="/wishlist" class="wishlist-icon" style="color: white;">
+                <i class="fas fa-heart" style="font-size: 24px; color: red;"></i>Wishlist
+            </a>
+
+            {{!-- <div class="nav-returns">
+                <p><span>Returns</span></p>
+                <p class="nav-second">
+                    Orders
+                    <i class="fa-sharp fa-solid fa-circle-chevron-down"></i>
+                </p>
+            </div> --}}
+            {{/if}}
+
+
+            <div class="nav-cart"></div>
+            <a href="/cart">
+                <i class="fa-solid fa-cart-shopping"></i> Cart<span class="badge badge-light">{{count}}</span>
+            </a>
+        </div>
+
+        </div>
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>
+                At FullRevMoto, accessible from <a href="https://fullrevmoto.com"
+                    target="_blank">https://fullrevmoto.com</a>, one of our main priorities is the privacy of our
+                visitors. This Privacy Policy document contains types of information that is collected and recorded by
+                FullRevMoto and how we use it.
+            </p>
+            <p>
+                If you have additional questions or require more information about our Privacy Policy, do not hesitate
+                to <a href="mailto:support@fullrevmoto.com">contact us</a>.
+            </p>
+            <p>
+                This Privacy Policy applies only to our online activities and is valid for visitors to our website with
+                regards to the information that they shared and/or collect in FullRevMoto. This policy is not applicable
+                to any information collected offline or via channels other than this website.
+            </p>
+
+            <h2>Consent</h2>
+            <p>
+                By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+            </p>
+
+            <h2>Information We Collect</h2>
+            <p>
+                The personal information that you are asked to provide, and the reasons why you are asked to provide it,
+                will be made clear to you at the point we ask you to provide your personal information.
+            </p>
+            <p>
+                If you contact us directly, we may receive additional information about you such as your name, email
+                address, phone number, the contents of the message and/or attachments you may send us, and any other
+                information you may choose to provide.
+            </p>
+            <p>
+                When you register for an Account, we may ask for your contact information, including items such as name,
+                company name, address, email address, and telephone number.
+            </p>
+
+            <h2>How We Use Your Information</h2>
+            <p>We use the information we collect in various ways, including to:</p>
+            <ul>
+                <li>Provide, operate, and maintain our website</li>
+                <li>Improve, personalize, and expand our website</li>
+                <li>Understand and analyze how you use our website</li>
+                <li>Develop new products, services, features, and functionality</li>
+                <li>Communicate with you, either directly or through one of our partners, including for customer
+                    service, to provide you with updates and other information relating to the website, and for
+                    marketing and promotional purposes</li>
+                <li>Send you emails</li>
+                <li>Find and prevent fraud</li>
+            </ul>
+
+            <h2>Log Files</h2>
+            <p>
+                FullRevMoto follows a standard procedure of using log files. These files log visitors when they visit
+                websites. All hosting companies do this as part of hosting services' analytics. The information
+                collected by log files includes internet protocol (IP) addresses, browser type, Internet Service
+                Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are
+                not linked to any information that is personally identifiable. The purpose of the information is for
+                analyzing trends, administering the site, tracking users' movement on the website, and gathering
+                demographic information.
+            </p>
+
+            <h2>Cookies</h2>
+            <p>
+                Like any other website, FullRevMoto uses 'cookies'. These cookies are used to store information
+                including visitors' preferences, and the pages on the website that the visitor accessed or visited. The
+                information is used to optimize the users' experience by customizing our web page content based on
+                visitors' browser type and/or other information.
+            </p>
+
+            <h2>GDPR Data Protection Rights</h2>
+            <p>We would like to make sure you are fully aware of all of your data protection rights. Every user is
+                entitled to the following:</p>
+            <ul>
+                <li><strong>The right to access</strong> – You have the right to request copies of your personal data.
+                    We may charge you a small fee for this service.</li>
+                <li><strong>The right to rectification</strong> – You have the right to request that we correct any
+                    information you believe is inaccurate. You also have the right to request that we complete the
+                    information you believe is incomplete.</li>
+                <li><strong>The right to erasure</strong> – You have the right to request that we erase your personal
+                    data, under certain conditions.</li>
+                <li><strong>The right to restrict processing</strong> – You have the right to request that we restrict
+                    the processing of your personal data, under certain conditions.</li>
+                <li><strong>The right to object to processing</strong> – You have the right to object to our processing
+                    of your personal data, under certain conditions.</li>
+                <li><strong>The right to data portability</strong> – You have the right to request that we transfer the
+                    data that we have collected to another organization, or directly to you, under certain conditions.
+                </li>
+            </ul>
+            <p>If you make a request, we have one month to respond to you. If you would like to exercise any of these
+                rights, please <a href="mailto:support@fullrevmoto.com">contact us</a>.</p>
+
+            <h2>Children's Information</h2>
+            <p>
+                Another part of our priority is adding protection for children while using the internet. We encourage
+                parents and guardians to observe, participate in, and/or monitor and guide their online activity.
+            </p>
+            <p>
+                FullRevMoto does not knowingly collect any Personal Identifiable Information from children under the age
+                of 13. If you think that your child provided this kind of information on our website, we strongly
+                encourage you to <a href="mailto:support@fullrevmoto.com">contact us</a> immediately and we will do our
+                best efforts to promptly remove such information from our records.
+            </p>
+        </div>
+</body>
+
+</html>
+
+</header>
+
+
+
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background-color: black;
+        color: white;
+    }
+
+    .container {
+
+        max-width: 800px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #161716;
+
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 20px;
+        color: greenyellow;
+    }
+
+    h2 {
+        color: greenyellow
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+</style>
+</style>

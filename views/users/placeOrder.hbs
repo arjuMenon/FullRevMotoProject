@@ -1,0 +1,343 @@
+ <header>
+        <nav>
+            <div class="main-nav">
+                <div class="logo" style="color: white;" >Place order</div>
+                <ul>
+                    <li><a href="/">Store</a></li>
+                    <li><a href="/">Product</a></li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="wrapper">
+                {{!-- <div class="dropdown">
+                    <form name="form">
+                        <select name="items" onchange="getSelectedItems()">
+                            <option>Select Item</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="iphone">iphone</option>
+                            <option value="computer">Computer</option>
+                        </select>
+                    </form>
+                </div> --}}
+                <label id="msg"></label>
+
+                {{!-- <div class="search">
+                    <input type="text" placeholder="search product...." id="input-search" />
+                    <i class="bx bx-search-alt-2"></i>
+                </div> --}}
+
+                {{!-- <div class="cart">
+                    <i class="bx bxs-cart"></i><span class="count">0</span>
+                </div> --}}
+            </div>
+        </nav>
+    </header>
+<body>
+    <div class="container mt-5">
+        <form action="" id="checkout-form">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2>Enter Delivery Details</h2><br>
+                    <div>
+                        <label for="address">Address</label>
+                        <input class="form-control" type="text" id="address" name="address" placeholder="Enter your address" required>
+                        <label for="pincode">Pincode</label>
+                        <input class="form-control" type="text" id="pincode" name="pincode" placeholder="Enter pincode" required>
+                        <label for="mobile">Mobile</label>
+                        <input class="form-control" type="text" id="mobile" name="mobile" placeholder="Enter mobile number" required>
+                        <input type="text" name="userId" value="{{user}}" hidden>
+                    </div> 
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="checkout">
+                        <h5>Total Amount: Rs.{{total}}</h5>
+                        <hr>
+                        <div class="payment">
+                            <p>Payment method</p>
+                            <label class="radio-inline">
+                                <input type="radio" name="payment-method" value="COD" checked> COD
+                            </label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="payment-method" value="ONLINE"> Online payment
+                            </label>
+                            <br>
+                            
+                            <button class="btn btn-primary float-right mt-3" type="submit">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+ <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ <script>
+  $('#checkout-form').submit((e)=>{
+    e.preventDefault()
+    $.ajax({
+      url:'/place-order',
+      method:'post',
+      data:$('#checkout-form').serialize(),
+      success:(response)=>{
+        
+        if(response.codSuccess){
+        alert('Order Placed Successfully!!Thank you!!')
+        location.href='/orderSuccess'
+
+        }else{
+          razorpayPayment(response)
+          
+        }
+
+      }
+    })
+  })
+  function razorpayPayment(order){
+    var options = {
+        "key": "rzp_test_ZWBb64aF6vvl05",
+        "amount": order.amount,
+        "currency": "INR",
+        "name": "FULLREVMOTO",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": order.id, // Dynamically assigned order ID
+        "handler": function (response){
+            alert(response.razorpay_payment_id);
+            alert(response.razorpay_order_id);
+            alert(response.razorpay_signature);
+            verifyPayment(response, order);
+        },
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com", 
+            "contact": "9000090000" 
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+}
+
+
+   
+
+  
+  function verifyPayment(payment,order){
+    $.ajax({
+      url:'/verify-payment',
+      data:{
+        payment,
+        order
+      },
+      method:'post',
+      success:(response)=>{
+         alert('Order Placed Successfully!!Thank you!!')
+        location.href='/orderSuccess'
+      }
+    })
+  }
+
+</script> 
+
+
+<style>
+    body {
+     
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  transition: all 0.3s linear;
+}
+
+/*======CONTAINE=======*/
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+/*======HEADER=======*/
+header {
+  /*------NAVBAR------*/
+}
+header nav {
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px;
+  background-color: black;
+  padding: 1.25rem;
+  /*---WRAPPER---*/
+}
+header nav .main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header nav .main-nav .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: #3e416b;
+}
+header nav .main-nav .logo span {
+  color: orange;
+}
+header nav .main-nav p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+}
+header nav .main-nav ul {
+  display: flex;
+}
+header nav .main-nav ul li {
+  padding: 0.7rem 1rem;
+}
+header nav .main-nav ul li a {
+  font-size: 1.1rem;
+  color: white;
+  transition: all 0.5s ease;
+}
+header nav .main-nav ul li a:hover {
+  background-color: #3e416b;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1rem;
+}
+header nav .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*----DROPDOW----*/
+  /*----SEARCH----*/
+  /*----CART----*/
+}
+header nav .wrapper .dropdown {
+  width: 130px;
+  text-align: center;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+header nav .wrapper .dropdown select {
+  background: none;
+  padding: 0.7rem 0.625rem 0.7rem 0;
+  color: #3e416b;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+header nav .wrapper .search {
+  width: 31.25rem;
+  background-color: white;
+  height: 2.8125rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+header nav .wrapper .search input {
+  width: 100%;
+  height: 2rem;
+}
+header nav .wrapper .search i {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+header nav .wrapper .cart {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0.625rem;
+  border-radius: 0.5rem;
+  width: 5rem;
+  font-size: 1.5rem;
+}
+.bx {
+    color: firebrick;
+    font-family: boxicons !important;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    display: inline-block;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+header nav .wrapper span {
+  height: 1.375rem;
+  width: 1.378rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  background-color: firebrick;
+  color: white;
+  font-weight: bold;
+  border-radius: 2rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-family: fantasy;
+}
+    .col-md-8 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+        font-family: fantasy;
+    }
+    /* Form Controls */
+    .form-control {
+        
+        margin-bottom: 15px;
+    }
+    /* Radio Buttons */
+    input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+    /* Payment Method Labels */
+    label.radio-inline {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+    /* Checkout Div */
+   .checkout {
+    color: whitesmoke;
+    background-color: black;
+    width: 450px;
+    border: black;
+    border-radius: 65px;
+    padding: 48px;
+    height: 339px;
+}
+.btn-primary {
+    color: black;
+    background-color: white;
+    border-color: white;
+    font-family: fantasy;
+    border-radius: 20px;
+}
+</style>
