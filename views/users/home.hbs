@@ -36,9 +36,16 @@
                 <body>
                     <header>
                         <div class="navbar">
-                            <div class="nav-logo">
-                                <div class="logo"></div>
+                            <div >
+                                <button class="search-icon-btn"
+                                    onclick="window.location.href='/search'">
+                                    <i class="fas fa-search"></i>
+                                </button>
+
                             </div>
+                           <div class="nav-logo">
+                            <img src="/images/logo.jpg" alt="Logo" class="hero-logo" style="width: 100%; height: 166px;" />
+                           </div>
 
                             {{!-- <div class="nav-address">
                                 <p class="add-first">Deliver to</p>
@@ -48,16 +55,13 @@
                                 </div>
                             </div> --}}
 
-                            <div class="nav-search">
-                                <select class="search-select">
-                                    <option selected="selected">All</option>
-                                    <option>Arts &amp; Crafts</option>
+                            {{!-- <div >
+                                <button class="search-icon-btn"
+                                    onclick="window.location.href='/search'">
+                                    <i class="fas fa-search"></i>
+                                </button>
 
-                                </select>
-                                <input class="search-input" type="text" name="value" placeholder="Search....">
-                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                                
-                            </div>
+                            </div> --}}
                             {{!--
                             <div class="nav-language">
                                 <i class="fa-solid fa-globe"></i> EN
@@ -97,7 +101,7 @@
                             </div>
                             {{#if user}}
                             <a href="/wishlist" class="wishlist-icon" style="color: white;">
-                            <i class="fas fa-heart" style="font-size: 24px; color: red;"></i>Wishlist
+                                <i class="fas fa-heart" style="font-size: 24px; color: red;"></i>Wishlist
                             </a>
 
                             {{!-- <div class="nav-returns">
@@ -237,7 +241,7 @@
                 <li><a href="https://maps.app.goo.gl/P53nyJmHS6Ezmj238">Full Moto Private Limited,13/412/c, Near
                         Dheshaboshni Library,<br> Kuthiravattom Road,
                         673016 Pottammal,Calicut, Kerala, India</a></li><br>
-              <li><a href="mailto fullmoto@gmail.com"><i class="fas fa-envelope"></i> fullmoto@gmail.com</a></li><br>
+                <li><a href="mailto fullmoto@gmail.com"><i class="fas fa-envelope"></i> fullmoto@gmail.com</a></li><br>
 
                 <li><a href="#">Contact: 7403182552</a></li><br>
                 <li><a href="#">For online orders: 8289820032</a></li><br>

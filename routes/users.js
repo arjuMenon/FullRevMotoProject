@@ -270,6 +270,10 @@ router.get('/shipping-policy',(req,res)=>{
 //   })
 
 // })
+router.get('/search',async(req,res)=>{
+  let products=await productHelpers.getAllProducts()
+  res.render('users/search',{products})
+})
 
 
 
