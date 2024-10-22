@@ -271,8 +271,10 @@ router.get('/shipping-policy',(req,res)=>{
 
 // })
 router.get('/search',async(req,res)=>{
+  let user=req.session.user;
+  console.log('user',user)
   let products=await productHelpers.getAllProducts()
-  res.render('users/search',{products})
+  res.render('users/search',{products,user})
 })
 
 
