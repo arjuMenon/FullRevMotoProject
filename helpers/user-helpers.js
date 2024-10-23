@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const { reject, resolve } = require('promise')
 var objectId = require('mongodb').ObjectId
 const Razorpay = require('razorpay')
+const { registerHelper } = require('hbs')
 // const { default: orders } = require('razorpay/dist/types/orders')
 var instance = new Razorpay({
     key_id: 'rzp_test_ZWBb64aF6vvl05',
@@ -635,7 +636,66 @@ module.exports = {
             
 
         })
-    }
+    },
+    forgotPassword:(data)=>{
+        let response={}
+        return new Promise(async(resolve,reject)=>{
+           let check= await db.get().collection(collection.USER_COLLECTION).findOne({Email:data.email,Username:data.username}
+                
+                
+            )
+            if(check){
+                response.status=true
+                resolve(response)
+            }else{
+                response.err="The email and username don't match"
+                resolve(response)
+
+            }
+        })
+    },
+    change_Password: (data) => {
+        let response = {};
+        return new Promise(async (resolve, reject) => {
+          // Check if the passwords match
+          if (data.newPass !== data.confNewPass) {
+            response.status = false;
+            response.err = "New password and confirm password do not match.";
+            return resolve(response);  // Resolve the promise with the error message
+          }
+          
+          // Hash the new password
+          data.newPass = await bcrypt.hash(data.newPass, 10);
+          
+          // Update the password in the database
+          await db.get().collection(collection.USER_COLLECTION).updateOne({ Email: data.email }, {
+            $set: { Password: data.newPass }
+          }).then(() => {
+            response.status = true;
+            response.msg = "Password changed successfully!";
+            resolve(response);  // Successfully changed password
+          }).catch((error) => {
+            response.status = false;
+            response.err = "Error updating password. Please try again.";
+            reject(response);  // Handle database errors
+          });
+        });
+      },
+      removeFromWishlist:(proId,userId)=>{
+        return new Promise(async(resolve,reject)=>{
+            await db.get().collection(collection.WISHLIST_COLLECTION).updateOne({user:objectId(userId)},
+        {
+            $pull:
+            {
+                products:objectId(proId)
+
+            }
+        }).then((response)=>{
+            resolve(response)
+        })
+        })
+      }
+      
 
 
 
