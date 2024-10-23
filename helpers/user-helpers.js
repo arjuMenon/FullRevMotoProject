@@ -5,6 +5,7 @@ const { reject, resolve } = require('promise')
 var objectId = require('mongodb').ObjectId
 const Razorpay = require('razorpay')
 const { registerHelper } = require('hbs')
+// const { default: products } = require('razorpay/dist/types/products')
 // const { default: orders } = require('razorpay/dist/types/orders')
 var instance = new Razorpay({
     key_id: 'rzp_test_ZWBb64aF6vvl05',
@@ -104,6 +105,17 @@ module.exports = {
                     ).then(() => {
                         resolve()
                     })
+                    // paste
+                    await db.get().collection(collection.WISHLIST_COLLECTION).updateOne({user:objectId(userId)},
+                    {
+                        $pull:
+                        {
+                            products:objectId(proId)
+                        }
+                    }).then((response)=>{
+                        resolve(response)
+            
+                    })
 
                 } else {
                     db.get().collection(collection.CART_COLLECTION).updateOne(
@@ -115,6 +127,17 @@ module.exports = {
                         }).then((response) => {
                             resolve()
 
+                        })
+                        // paste
+                        await db.get().collection(collection.WISHLIST_COLLECTION).updateOne({user:objectId(userId)},
+                        {
+                            $pull:
+                            {
+                                products:objectId(proId)
+                            }
+                        }).then((response)=>{
+                            resolve(response)
+                
                         })
                 }
 
@@ -129,6 +152,27 @@ module.exports = {
 
                         resolve()
                     })
+                      await db.get().collection(collection.WISHLIST_COLLECTION).updateOne({user:objectId(userId)},
+        {
+            $pull:
+            {
+                products:objectId(proId)
+            }
+        }).then((response)=>{
+            resolve(response)
+
+        })
+        // paste
+        await db.get().collection(collection.WISHLIST_COLLECTION).updateOne({user:objectId(userId)},
+        {
+            $pull:
+            {
+                products:objectId(proId)
+            }
+        }).then((response)=>{
+            resolve(response)
+
+        })
             }
         })
 

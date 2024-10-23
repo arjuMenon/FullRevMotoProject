@@ -324,6 +324,7 @@ router.get('/search', async (req, res) => {
 
 
 
+
 // router.get('/add-to-wishlist/:id',verifyLogin,(req,res)=>{
 //   console.log('ID',req.params)
 //   userHelpers.doWishlist(req.params.id,req.session.user._id).then((products)=>{
