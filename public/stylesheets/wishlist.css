@@ -49,14 +49,13 @@ header {
   /*------NAVBAR------*/
 }
 header nav {
-  display: flex;
+  display: contents;
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
   min-height: 200px;
   background-color: currentColor;
   padding: 1.25rem;
-  /*---WRAPPER---*/
 }
 header nav .main-nav {
   display: flex;
