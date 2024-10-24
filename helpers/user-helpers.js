@@ -579,58 +579,41 @@ module.exports = {
     // },
     
     getProductDetails: (userId) => {
-        return new Promise(async (resolve, reject) => {
-            let orderItems = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
-                {
-                    $match: { User: objectId(userId) }
-                },
-                {
-                    $unwind: '$Products'
+        return new Promise(async(resolve,reject)=>{
+           let orderItems = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
 
-                },
-                {
-                    $project:
-                    {
-                        item: '$Products.item',
-                        quantity: '$Products.quantity',     
-                        Status:'$Status',
-                        Date:'$Date',
-                        PaymentMethod:'$PaymentMethod'
-
-
-
-                    }
-
-                },
-                {
-                    $lookup:
-                    {
-                        from: collection.PRODUCT_COLLECTION,
-                        localField: 'item',
-                        foreignField: '_id',
-                        as: 'product'
-
-                    }
-
-
-
-                },
-                {
-                    $project:
-                    {
-                        item: 1,
-                        quantity: 1,
-                        product: { $arrayElemAt: ['$product', 0] },
-                        Status:1,
-                        Date:1,
-                        PaymentMethod:1
-
-                    }
-
+            {
+              $match: { User: objectId(userId) }
+            },
+            {
+              $unwind: '$Products'
+            },
+            {
+              $lookup: {
+                from: 'products',
+                localField: 'Products.item',
+                foreignField: '_id',
+                as: 'product'
+              }
+            },
+            {
+              $project: {
+                item: '$Products.item',
+                quantity: '$Products.quantity',
+                Status: '$Status',
+                Date: '$Date',
+                PaymentMethod: '$PaymentMethod',
+                product: { $arrayElemAt: ['$product', 0] },  // get the first element from the product array
+                productPrice: { $toInt: { $arrayElemAt: ['$product.Price', 0] } },  // convert the first price to int
+                total: {
+                  $multiply: [
+                    { $toInt: '$Products.quantity' },
+                    { $toInt: { $ifNull: [{ $arrayElemAt: ['$product.Price', 0] }, 0] } }
+                  ]
                 }
-
-
-            ]).toArray()
+              }
+            }
+          ]).toArray()
             // console.log('items', orderItems[0].product)
             console.log('order', orderItems)
             resolve(orderItems)

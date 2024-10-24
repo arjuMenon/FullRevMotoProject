@@ -266,6 +266,7 @@ router.get('/orders', verifyLogin, async (req, res) => {
   let user = req.session.user
   // let orders=await userHelpers.getOrders(user._id)
   let product = await userHelpers.getProductDetails(user._id)
+  // let totalPrice = await userHelpers.totalPrice(req.session.user._id)
   // console.log('user',user)
   console.log('product', product)
   // console.log('23orders',orders)
